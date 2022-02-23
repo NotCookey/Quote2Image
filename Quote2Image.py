@@ -1,40 +1,23 @@
-from PIL import Image, ImageDraw, ImageFont
-import math, random
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
+import random, math
 
-x1 = 612
-y1 = 612
-
-def auto_color():
-    d = 0
-    rgbGenerator = lambda: (
-        random.randint(0, 255),
-        random.randint(0, 255),
-        random.randint(0, 255),
-        100,
-    )
-    color = rgbGenerator()
-    luminance = (0.299 * color[0] + 0.587 * color[1] + 0.114 * color[2]) / 255
-    if luminance > 0.5:
-        d = 0
-    else:
-        d = 255
-    return [(d, d, d), color]
-
-
-def convert(quote, author, fg=None, bg=None):
-    if bg:
-        bg = bg
-    else:
-        bg = (0, 0, 0)
-    if fg:
-        fg = fg
-    else:
-        fg = (255, 255, 255)
+def convert(quote, author, fg, image, border_color, font_file=None, font_size=None,width=None,height=None):
+    x1 = width if width else 612
+    y1 = height if height else 612
+        
     sentence = f"{quote} - {author}"
+    
+    quote = ImageFont.truetype(font_file if font_file else "fonts/Coves Bold.otf", font_size if font_size else 32)
 
-    quote = ImageFont.truetype("fonts/Coves Bold.otf", 27)
+    img = Image.new("RGB", (x1, y1), color=(255,255,255))
 
-    img = Image.new("RGB", (x1, y1), color=bg)
+    back = Image.open(image, 'r')
+    img_w, img_h = back.size
+    bg_w, bg_h = img.size
+    offset = ((bg_w - img_w) // 2, (bg_h - img_h) // 2)
+    bback=back.filter(ImageFilter.BLUR)
+    img.paste(bback, offset)
+    
     d = ImageDraw.Draw(img)
 
     sum = 0
@@ -64,6 +47,11 @@ def convert(quote, author, fg=None, bg=None):
 
     qx = x1 / 2 - x2 / 2
     qy = y1 / 2 - y2 / 2
+
+    d.text((qx-1, qy-1), fresh_sentence, align="center", font=quote, fill=border_color)
+    d.text((qx+1, qy-1), fresh_sentence, align="center", font=quote, fill=border_color)
+    d.text((qx-1, qy+1), fresh_sentence, align="center", font=quote, fill=border_color)
+    d.text((qx+1, qy+1), fresh_sentence, align="center", font=quote, fill=border_color)
 
     d.text((qx, qy), fresh_sentence, align="center", font=quote, fill=fg)
 
