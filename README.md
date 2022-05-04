@@ -1,6 +1,6 @@
 <h1 align="center">Quote2Image</h1>
 <p align="center"><b>A Python Library to Make Quote Images</b></p>
-<p align="center"><kbd><img src="https://cdn.discordapp.com/attachments/905732238237368351/919180108181422120/quote.png" height=300px></kbd></p>
+<p align="center"><kbd><img src="https://cdn.discordapp.com/attachments/969592495153492071/971484677045096468/unknown.png" height=300px></kbd></p>
 
 # How To Use?
 - **Download The Latest Package From [Releases](https://github.com/SecretsX/Quote2Image/releases)**
