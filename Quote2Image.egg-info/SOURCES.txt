@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.cfg
+setup.py
+Quote2Image/Quote2Image.py
+Quote2Image/__init__.py
+Quote2Image.egg-info/PKG-INFO
+Quote2Image.egg-info/SOURCES.txt
+Quote2Image.egg-info/dependency_links.txt
+Quote2Image.egg-info/requires.txt
+Quote2Image.egg-info/top_level.txt
