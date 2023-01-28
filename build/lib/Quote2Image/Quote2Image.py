@@ -35,7 +35,7 @@ def GenerateColors():
 	return foreground_color, background_color
 
 
-def Convert(quote, author, fg, bg, font_type, font_size, width, height):
+def Convert(quote, author, fg, bg, font_type, font_size, width, height, watermark_text, watermark_font_size:int=None, font_size_author:int=None):
 	if isinstance(bg, ImgObject):
 		image = Image.open(bg.image).resize((width, height))
 		enhancer = ImageEnhance.Brightness(image)
@@ -47,7 +47,11 @@ def Convert(quote, author, fg, bg, font_type, font_size, width, height):
 
 	draw = ImageDraw.Draw(image)
 
+	if font_size_author is None:
+		font_size_author = font_size
+
 	font = ImageFont.truetype(font_type, font_size)
+	font_author = ImageFont.truetype(font_type, font_size_author)
 
 	lines = []
 	line = ""
@@ -75,8 +79,17 @@ def Convert(quote, author, fg, bg, font_type, font_size, width, height):
 	draw.text((x, y), " - ", fg, font=font)
 	y += font_size // 2
 
-	author_width = draw.textsize(author, font)[0]
+	author_width = draw.textsize(author, font_author)[0]
 	x = (width - author_width) // 2
-	draw.text((x, y+15), author, fg, font=font)
+	draw.text((x, y+15), author, fg, font=font_author)
+
+	if watermark_text:
+		if watermark_font_size is None:
+			watermark_font_size = font_size
+		watermark_font = ImageFont.truetype(font_type, watermark_font_size)
+		watermark_width, watermark_height = draw.textsize(watermark_text, watermark_font)
+		x = width - watermark_width - 10
+		y = height - watermark_height - 10
+		draw.text((x, y), watermark_text, fg, font=watermark_font)
 
 	return image

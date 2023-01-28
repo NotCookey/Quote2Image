@@ -9,18 +9,23 @@ pip install Quote2Image
 ```
 
 ## Usage
-**The convert function takes the following arguments:**
+**The `Convert` function takes the following arguments:**
 
 - **`quote` : The quote to convert.**
 - **`author` : The author of the quote.**
 - **`fg` : The foreground color of the text.**
 - **`bg` : The background color of the image.**
 - **`font_type` : The font to use for the text.**
-- **`font_size` : The font size to use for the text.**
+- **`font_size` : This font size is used for the quote and watermark.**
+- **`font_size_author` : This font size is used for the author (Optional, Default value is set to `font_size`).**
 - **`width` : The width of the image.**
 - **`height` : The height of the image.**
+- **`watermark_text` : The text for the watermark (Leave it blank for no watermarks).**
+- **`watermark_font_size` : The font size for the watermark text (Optional, Default save is set to `font_size`).**
 
-**Generating an image using RGB background and foreground, The package comes with a builtin `GenerateColors` function that generates a fg and bg color with the correct amount of luminosity and returns them in tuples.**
+## Generating an image using RGB background and foreground
+
+**The package comes with a builtin `GenerateColors` function that generates a fg and bg color with the correct amount of luminosity and returns them in tuples.**
 
 ```python
 from Quote2Image import Convert, GenerateColors
@@ -41,7 +46,9 @@ img=Convert(
 # Save The Image as a Png file
 img.save("hello.png")
 ```
-**Generating an image using a custom background image. We can do that using the `ImgObject` that gives us alot of flexibility on how we want our background Image to be.**
+## Generating an image using a custom background image.
+
+ **We can do that using the `ImgObject` that gives us alot of flexibility on how we want our background Image to be.**
 
 **The `ImgObject` class takes the following arguments:**
 
@@ -65,6 +72,35 @@ img=Convert(
 	font_type="arial.ttf",
 	width=1080,
 	height=450)
+
+# Save The Image as a Png file
+img.save("hello.png")
+```
+
+## Adding a watermark:
+
+- **`watermark_text` : The text for the watermark.**
+- **`watermark_font_size` : The font size for the watermark text.**
+
+```py
+from Quote2Image import Convert, GenerateColors
+
+# Generate Fg and Bg Color
+fg, bg = GenerateColors()
+
+img=Convert(
+	quote="Pooing keeps you healthy",
+	author="Pee",
+	fg=fg,
+	bg=bg,
+	font_size=32,
+	font_type="arial.ttf",
+	font_size_author=25,
+	width=1080,
+	height=450,
+    	watermark_text="@My.Watermark",
+    	watermark_font_size=15
+)
 
 # Save The Image as a Png file
 img.save("hello.png")
