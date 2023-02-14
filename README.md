@@ -16,7 +16,7 @@ pip install Quote2Image
 - **`fg` : The foreground color of the text.**
 - **`bg` : The background color of the image.**
 - **`font_type` : The font to use for the text.**
-- **`font_size` : This font size is used for the quote and watermark.**
+- **`font_size` : This font size is used for the quote.**
 - **`font_size_author` : This font size is used for the author (Optional, Default value is set to `font_size`).**
 - **`width` : The width of the image.**
 - **`height` : The height of the image.**
