@@ -1,6 +1,6 @@
 <h1 align="center">Quote2Image</h1>
 <p align="center"><b>A python module to convert text quotes into graphical images</b></p>
-<p align="center"><kbd><img src="https://cdn.discordapp.com/attachments/984056158149017623/1058028889588387850/hello.png" height=300px></kbd></p>
+<p align="center"><kbd><img src="https://github.com/NotCookey/Quote2Image/assets/88582190/c49bedbd-73a5-4eac-a1b0-a4d98445ae08" height=300px></kbd></p>
 
 ## Installation
 **To install Quote2Image, you can use `pip`:**
