@@ -118,6 +118,15 @@ img.save("hello.png")
 - **You must provide a prominent notice stating that you have modified the module, and the date of the modification.**
 - **If you distribute the module, you must do so under the terms of the GPL-3.0 license.**
 
+## Star History
+
+<a href="https://star-history.com/#NotCookey/Quote2Image&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=NotCookey/Quote2Image&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=NotCookey/Quote2Image&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=NotCookey/Quote2Image&type=Date" />
+  </picture>
+</a>
 
 # That's It!
 > **Thank You! Hope this was useful to you <3**
