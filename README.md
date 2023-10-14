@@ -128,5 +128,5 @@ img.save("hello.png")
   </picture>
 </a>
 
-# That's It!
+# That's It
 > **Thank You! Hope this was useful to you <3**
